@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>齐白石 (Qi Baishi) - Master of Chinese Painting</title>
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #8C0303;
+            --secondary-color: #E6D2AA;
+            --text-color: #333;
+            --background-color: #FEFAED;
+            --accent-color: #1A4D2E;
+        }
+        
+        body {
+            font-family: 'Noto Serif', serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-image: url('https://example.com/rice-paper-texture.jpg');
+            background-attachment: fixed;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            text-align: center;
+            padding: 2rem 0;
+            background-color: rgba(252, 246, 235, 0.8);
+            border-bottom: 2px solid var(--primary-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://example.com/chinese-ink-splash.png');
+            background-size: contain;
+            background-position: right;
+            background-repeat: no-repeat;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        h1 span.chinese {
+            display: block;
+            font-family: 'Noto Serif SC', serif;
+            font-weight: normal;
+        }
+        
+        .subtitle {
+            font-style: italic;
+            font-size: 1.5rem;
+        }
+        
+        /* Biography Section */
+        .biography {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            margin: 4rem 0;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .portrait {
+            flex: 0 0 300px;
+            position: relative;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .portrait:hover {
+            transform: scale(1.03);
+        }
+        
+        .portrait img {
+            width: 100%;
+            border: 5px solid var(--secondary-color);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        
+        .portrait:after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 12px;
+            left: 12px;
+            border: 1px solid var(--primary-color);
+            z-index: -1;
+        }
+        
+        .bio-text {
+            flex: 1;
+        }
+        
+        /* Gallery Section */
+        .gallery-section {
+            margin: 4rem 0;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        h2:after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 0.5rem auto;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .artwork {
+            background: white;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .artwork:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+        
+        .artwork img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+        
+        .artwork:hover img {
+            transform: scale(1.05);
+        }
+        
+        .artwork-info {
+            padding: 1rem 0;
+            text-align: center;
+        }
+        
+        .artwork-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+        
+        /* Timeline Section */
+        .timeline-section {
+            margin: 4rem 0;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        .timeline:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: var(--primary-color);
+        }
+        
+        .timeline-item {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            margin-left: 50%;
+            padding-left: 2rem;
+        }
+        
+        .timeline-item:nth-child(even) {
+            margin-right: 50%;
+            padding-right: 2rem;
+            text-align: right;
+        }
+        
+        .timeline-item:before {
+            content: "";
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            top: 5px;
+        }
+        
+        .timeline-item:nth-child(odd):before {
+            left: -8px;
+        }
+        
+        .timeline-item:nth-child(even):before {
+            right: -8px;
+        }
+        
+        .year {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+        
+        /* Interactive Elements */
+        .interactive-section {
+            margin: 4rem 0;
+            text-align: center;
+        }
+        
+        .interactive-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .interactive-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .interactive-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+        
+        .interactive-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .color-palette {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .color {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .color:hover {
+            transform: scale(1.2);
+        }
+        
+        .red { background-color: #8C0303; }
+        .blue { background-color: #1E4B6B; }
+        .green { background-color: #1A4D2E; }
+        .black { background-color: #111; }
+        .ochre { background-color: #D3A656; }
+        
+        /* Zoom Modal for Artwork */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .modal.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .modal-content {
+            max-width: 80%;
+            max-height: 80%;
+        }
+        
+        .modal-content img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+        }
+        
+        /* Brush Technique Interactive */
+        .canvas-container {
+            width: 100%;
+            height: 300px;
+            border: 1px solid #ddd;
+            background-color: #fdf6e9;
+            position: relative;
+        }
+        
+        canvas {
+            width: 100%;
+            height: 100%;
+            cursor: url('https://example.com/brush-cursor.png'), auto;
+        }
+        
+        .brush-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+            gap: 1rem;
+        }
+        
+        .brush-control {
+            padding: 0.5rem 1rem;
+            border: none;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        
+        .brush-control:hover {
+            background-color: #2C6E41;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            background-color: var(--primary-color);
+            color: white;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .biography {
+                flex-direction: column;
+            }
+            
+            .portrait {
+                margin: 0 auto 2rem;
+            }
+            
+            .timeline:before {
+                left: 30px;
+            }
+            
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                margin-left: 0;
+                margin-right: 0;
+                padding-left: 50px;
+                text-align: left;
+            }
+            
+            .timeline-item:nth-child(odd):before,
+            .timeline-item:nth-child(even):before {
+                left: 22px;
+                right: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>
+                <span class="chinese">齐白石</span>
+                Qi Baishi
+            </h1>
+            <p class="subtitle">Master of Chinese Painting (1864-1957)</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section class="biography">
+            <div class="portrait">
+                <a href="https://www.sothebys.com/en/artists/qi-baishi" target="_blank">
+                    <img src="https://sothebys-com.brightspotcdn.com/70/58/f8ed03b8427c985a067ab23b82b1/qi-baishi.jpg" 
+                         alt="Portrait of Qi Baishi">
+                </a>
+            </div>
+            <div class="bio-text">
+                <h2>The Artist</h2>
+                <p>齐白石 (Qi Baishi) was one of China's most renowned painters of the 20th century. Born to a farming family in Hunan Province in 1864, he began his career as a carpenter before dedicating himself to art.</p>
+                <p>Known for his whimsical, vibrant paintings of shrimp, fish, crabs, frogs, insects, and flowers, Qi developed a distinctive style that blended traditional techniques with a modern sensibility. His works are characterized by bright colors, bold brushstrokes, and a perfect balance between realism and abstraction.</p>
+                <p>Qi Baishi's artistic philosophy can be summarized in his famous words: "Paintings must be something between likeness and unlikeness." This approach allowed him to capture the essence of his subjects rather than merely their outward appearance.</p>
+                <p>By the time of his death in 1957, he had produced thousands of paintings and earned recognition as one of China's greatest artists. His works now hang in major museums worldwide and continue to influence contemporary Chinese art.</p>
+            </div>
+        </section>
+        
+        <section class="gallery-section">
+            <h2>Masterworks Gallery</h2>
+            <div class="gallery">
+                <div class="artwork" data-artwork="shrimp">
+                    <img src="https://nftplazas.com/wp-content/uploads/2021/12/Shrimp-1280x720.jpg" alt="Qi Baishi's Shrimp Painting">
+                    <div class="artwork-info">
+                        <h3 class="artwork-title">Shrimp</h3>
+                        <p>One of Qi's most celebrated subjects, painted with just a few masterful brushstrokes</p>
+                    </div>
+                </div>
+                <div class="artwork" data-artwork="lotus">
+                    <img src="https://artlogic-res.cloudinary.com/w_1600,h_1600,c_limit,f_auto,fl_lossy,q_auto/artlogicstorage/fuqiumengfineartllc/images/view/da7ac94e4b273e3d640b61f9dff4493fj/fuqiumengfineart-qi-baishi-lotus-of-longevity.jpg" alt="Qi Baishi's Lotus Painting">
+                    <div class="artwork-info">
+                        <h3 class="artwork-title">Lotus Flowers</h3>
+                        <p>Delicate yet vivid depictions of lotus blossoms, a symbol of purity in Chinese culture</p>
+                    </div>
+                </div>
+                <div class="artwork" data-artwork="crabs">
+                    <img src="https://farm6.static.flickr.com/5052/5531032048_f6bd4ef653_b.jpg" alt="Qi Baishi's Crab Painting">
+                    <div class="artwork-info">
+                        <h3 class="artwork-title">Crabs</h3>
+                        <p>Dynamic compositions capturing the essence and movement of crabs</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="timeline-section">
+            <h2>Life & Legacy Timeline</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="year">1864</div>
+                    <p>Born in Xiangtan, Hunan Province, China</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="year">1880s</div>
+                    <p>Began career as a carpenter and woodcarver</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="year">1902</div>
+                    <p>Decided to pursue painting professionally after traveling through China</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="year">1917</div>
+                    <p>Moved to Beijing, where he would spend the rest of his life</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="year">1920s</div>
+                    <p>Developed his mature style, focusing on small creatures and plants</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="year">1953</div>
+                    <p>Named Chairman of the Chinese Artists Association</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="year">1957</div>
+                    <p>Passed away in Beijing at the age of 93</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="year">Present</div>
+                    <p>His works continue to influence Chinese painting and command record prices at auctions</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="interactive-section">
+            <h2>Interactive Experiences</h2>
+            <div class="interactive-container">
+                <div class="interactive-card">
+                    <h3 class="interactive-title">Explore Qi's Color Palette</h3>
+                    <p>Click on a color to see artworks that feature this dominant tone</p>
+                    <div class="color-palette">
+                        <div class="color red" data-color="red"></div>
+                        <div class="color blue" data-color="blue"></div>
+                        <div class="color green" data-color="green"></div>
+                        <div class="color black" data-color="black"></div>
+                        <div class="color ochre" data-color="ochre"></div>
+                    </div>
+                    <div class="color-artwork-display">
+                        <img src="" alt="Artwork by color" style="display: none; width: 100%; margin-top: 1rem;">
+                    </div>
+                </div>
+                
+                <div class="interactive-card">
+                    <h3 class="interactive-title">Try Qi's Brush Techniques</h3>
+                    <p>Paint on the canvas below using traditional brush techniques</p>
+                    <div class="canvas-container">
+                        <canvas id="brushCanvas"></canvas>
+                    </div>
+                    <div class="brush-controls">
+                        <button class="brush-control" data-brush="thin">Thin Brush</button>
+                        <button class="brush-control" data-brush="medium">Medium Brush</button>
+                        <button class="brush-control" data-brush="thick">Thick Brush</button>
+                        <button class="brush-control" data-action="clear">Clear Canvas</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Artwork Modal -->
+    <div class="modal" id="artworkModal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content">
+            <img id="modal-image" src="" alt="Enlarged artwork">
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 Qi Baishi Art Appreciation Society</p>
+            <p>This interactive webpage celebrates the art and legacy of Qi Baishi, one of China's most important painters.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // JavaScript for interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Artwork modal functionality
+            const artworks = document.querySelectorAll('.artwork');
+            const modal = document.getElementById('artworkModal');
+            const modalImg = document.getElementById('modal-image');
+            const closeModal = document.querySelector('.close-modal');
+            
+            artworks.forEach(artwork => {
+                artwork.addEventListener('click', function() {
+                    const imgSrc = this.querySelector('img').src;
+                    modalImg.src = imgSrc;
+                    modal.classList.add('active');
+                });
+            });
+            
+            closeModal.addEventListener('click', function() {
+                modal.classList.remove('active');
+            });
+            
+            // Color palette interaction
+            const colors = document.querySelectorAll('.color');
+            const colorDisplay = document.querySelector('.color-artwork-display img');
+            
+            const colorArtworks = {
+                'red': 'https://example.com/qi-baishi-red-artwork.jpg',
+                'blue': 'https://example.com/qi-baishi-blue-artwork.jpg',
+                'green': 'https://example.com/qi-baishi-green-artwork.jpg',
+                'black': 'https://example.com/qi-baishi-black-artwork.jpg',
+                'ochre': 'https://example.com/qi-baishi-ochre-artwork.jpg'
+            };
+            
+            colors.forEach(color => {
+                color.addEventListener('click', function() {
+                    const colorName = this.getAttribute('data-color');
+                    colorDisplay.src = colorArtworks[colorName];
+                    colorDisplay.style.display = 'block';
+                });
+            });
+            
+            // Canvas painting functionality
+            const canvas = document.getElementById('brushCanvas');
+            const ctx = canvas.getContext('2d');
+            const brushControls = document.querySelectorAll('.brush-control');
+            let isDrawing = false;
+            let brushSize = 5;
+            let lastX = 0;
+            let lastY = 0;
+            
+            // Set canvas size
+            function setCanvasSize() {
+                const container = canvas.parentElement;
+                canvas.width = container.offsetWidth;
+                canvas.height = container.offsetHeight;
+            }
+            
+            setCanvasSize();
+            window.addEventListener('resize', setCanvasSize);
+            
+            // Drawing functions
+            function startDrawing(e) {
+                isDrawing = true;
+                [lastX, lastY] = [e.offsetX, e.offsetY];
+            }
+            
+            function draw(e) {
+                if (!isDrawing) return;
+                
+                ctx.beginPath();
+                ctx.moveTo(lastX, lastY);
+                ctx.lineTo(e.offsetX, e.offsetY);
+                ctx.strokeStyle = '#000';
+                ctx.lineWidth = brushSize;
+                ctx.lineCap = 'round';
+                ctx.stroke();
+                
+                [lastX, lastY] = [e.offsetX, e.offsetY];
+            }
+            
+            function stopDrawing() {
+                isDrawing = false;
+            }
+            
+            // Add event listeners for drawing
+            canvas.addEventListener('mousedown', startDrawing);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDrawing);
+            canvas.addEventListener('mouseout', stopDrawing);
+            
+            // Touch support for mobile devices
+            canvas.addEventListener('touchstart', function(e) {
+                const touch = e.touches[0];
+                const mouseEvent = new MouseEvent('mousedown', {
+                    clientX: touch.clientX,
+                    clientY: touch.clientY
+                });
+                canvas.dispatchEvent(mouseEvent);
+            });
+            
+            canvas.addEventListener('touchmove', function(e) {
+                const touch = e.touches[0];
+                const mouseEvent = new MouseEvent('mousemove', {
+                    clientX: touch.clientX,
+                    clientY: touch.clientY
+                });
+                canvas.dispatchEvent(mouseEvent);
+            });
+            
+            canvas.addEventListener('touchend', function() {
+                const mouseEvent = new MouseEvent('mouseup');
+                canvas.dispatchEvent(mouseEvent);
+            });
+            
+            // Brush controls
+            brushControls.forEach(control => {
+                control.addEventListener('click', function() {
+                    const brushType = this.getAttribute('data-brush');
+                    const action = this.getAttribute('data-action');
+                    
+                    if (brushType === 'thin') brushSize = 3;
+                    if (brushType === 'medium') brushSize = 8;
+                    if (brushType === 'thick') brushSize = 15;
+                    
+                    if (action === 'clear') {
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
